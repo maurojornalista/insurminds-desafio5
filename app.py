@@ -93,12 +93,8 @@ if st.button("Analisar risco", type="primary", use_container_width=True):
             value = weather.get(key)
             column.metric(f"{metric_icon} {label}", f"{value if value is not None else 'N/D'} {unit}".strip())
 
-        chart_data = pd.DataFrame(
-            {"Indicador": ["Precipitação (mm)", "Chuva (mm)", "Vento (km/h)"],
-             "Valor": [weather.get("precipitation") or 0, weather.get("rain") or 0, weather.get("wind_speed") or 0]}
-        ).set_index("Indicador")
-        st.caption("Indicadores atuais — comparação visual de precipitação, chuva e vento.")
-        st.bar_chart(chart_data, color="#117a8b")
+        if weather["source"] == "Cenário de demonstração":
+            st.caption("Os indicadores acima representam um cenário simulado; não há série temporal de previsão neste modo.")
     else:
         st.warning(weather["error"])
 
