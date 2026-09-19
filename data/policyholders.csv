@@ -1,0 +1,9 @@
+id,nome,cidade,estado,latitude,longitude,tipo_apolice,veiculo_ou_imovel,contato
+1,Ana Souza,São Paulo,SP,-23.5505,-46.6333,Auto,Hatch compacto,ana.souza@example.com
+2,Bruno Lima,São Paulo,SP,-23.5614,-46.6559,Residencial,Apartamento,bruno.lima@example.com
+3,Carla Mendes,Rio de Janeiro,RJ,-22.9068,-43.1729,Auto,Sedan,carla.mendes@example.com
+4,Diego Alves,Rio de Janeiro,RJ,-22.9110,-43.2094,Residencial,Casa,diego.alves@example.com
+5,Elisa Rocha,Curitiba,PR,-25.4284,-49.2733,Auto,SUV,elisa.rocha@example.com
+6,Felipe Costa,Curitiba,PR,-25.4384,-49.2633,Residencial,Sobrado,felipe.costa@example.com
+7,Gabriela Nunes,Porto Alegre,RS,-30.0346,-51.2177,Auto,Picape,gabriela.nunes@example.com
+8,Henrique Dias,Porto Alegre,RS,-30.0446,-51.2077,Residencial,Apartamento,henrique.dias@example.com
