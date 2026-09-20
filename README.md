@@ -1,6 +1,12 @@
 # InsurMinds Desafio 5 - Comunicação Climática Proativa
 
-MVP acadêmico do Desafio 5 do curso InsurMinds/I2A2. A aplicação identifica riscos climáticos em uma cidade e produz comunicações preventivas para segurados potencialmente afetados.
+MVP acadêmico do Desafio 5 do curso InsurMinds/I2A2, desenvolvido pelo grupo **Insight Builders**.
+
+## Integrantes
+
+- Márcio de la Cruz Lui
+- Mauro José de Oliveira
+- Pedro Antonio Franceschini
 
 **App publicado:** https://insurminds-desafio-5.streamlit.app
 
@@ -72,33 +78,17 @@ Sem chave, a aplicação permanece funcional e usa mensagens locais personalizad
 
 ## Clima real e previsão
 
-No modo **Clima real**, o WeatherAgent consulta a API Open-Meteo. A interface apresenta:
-
-- temperatura atual;
-- precipitação;
-- chuva;
-- velocidade do vento;
-- código WMO;
-- previsão de precipitação das próximas 12 horas;
-- dados brutos resumidos da API.
+No modo **Clima real**, o WeatherAgent consulta a API Open-Meteo. A interface apresenta temperatura atual, precipitação, chuva, velocidade do vento, código WMO, previsão de precipitação das próximas 12 horas e dados brutos resumidos da API.
 
 ## Modo demonstração
 
-Além de **Clima real**, há cenários de:
-
-- chuva intensa;
-- vento forte;
-- tempestade/granizo.
-
-Eles tornam a demonstração repetível. Cada cenário apresenta uma **evolução simulada nas próximas 12 horas** e é identificado explicitamente como fictício.
+Além de **Clima real**, há cenários de chuva intensa, vento forte e tempestade/granizo. Cada cenário apresenta uma **evolução simulada nas próximas 12 horas** e é identificado explicitamente como fictício.
 
 > Dados simulados para fins acadêmicos e de demonstração.
 
 ## Testes
 
 A validação final executou **7 testes automatizados**, todos aprovados.
-
-A suíte cobre RiskAgent, PolicyAgent, MessageAgent, WeatherAgent e o fluxo do orquestrador.
 
 ## Limitações
 
