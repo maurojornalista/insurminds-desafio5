@@ -93,7 +93,13 @@ if st.button("Analisar risco", type="primary", use_container_width=True):
             value = weather.get(key)
             column.metric(f"{metric_icon} {label}", f"{value if value is not None else 'N/D'} {unit}".strip())
 
-        if weather["source"] == "Cenário de demonstração":
+        if weather["source"] == "Open-Meteo" and weather.get("hourly_forecast"):
+            st.markdown("#### Previsão das próximas 12 horas")
+            forecast = pd.DataFrame(weather["hourly_forecast"])
+            forecast["Hora"] = pd.to_datetime(forecast["time"]).dt.strftime("%Hh")
+            chart = forecast.set_index("Hora")[["precipitation"]].rename(columns={"precipitation": "Precipitação (mm)"})
+            st.line_chart(chart, height=180, color="#117a8b")
+        elif weather["source"] == "Cenário de demonstração":
             st.caption("Os indicadores acima representam um cenário simulado; não há série temporal de previsão neste modo.")
     else:
         st.warning(weather["error"])
