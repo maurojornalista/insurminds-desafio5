@@ -32,6 +32,19 @@ def risk_presentation(risk: dict) -> tuple[str, str, str]:
     return "risk-yellow", "🟡", "Risco moderado"
 
 
+def simulated_forecast(scenario: str) -> pd.DataFrame:
+    """Retorna uma evolução didática de 12 horas, sem dados externos."""
+    series = {
+        "Chuva intensa": ("Precipitação simulada (mm)", [0, 1, 4, 9, 18, 30, 35, 25, 14, 6, 2, 0]),
+        "Vento forte": ("Vento simulado (km/h)", [18, 24, 32, 45, 58, 72, 76, 64, 50, 36, 26, 18]),
+        "Tempestade/granizo": ("Intensidade simulada do evento", [0, 0, 1, 2, 7, 10, 9, 3, 1, 0, 0, 0]),
+    }
+    label, values = series[scenario]
+    start_hour = datetime.now().hour
+    hours = [f"{(start_hour + offset) % 24:02d}h" for offset in range(12)]
+    return pd.DataFrame({"Hora": hours, label: values}).set_index("Hora")
+
+
 st.set_page_config(page_title="InsurMinds | Comunicação Climática", page_icon="⛅", layout="wide")
 st.markdown(
     """
@@ -100,7 +113,9 @@ if st.button("Analisar risco", type="primary", use_container_width=True):
             chart = forecast.set_index("Hora")[["precipitation"]].rename(columns={"precipitation": "Precipitação (mm)"})
             st.line_chart(chart, height=180, color="#117a8b")
         elif weather["source"] == "Cenário de demonstração":
-            st.caption("Os indicadores acima representam um cenário simulado; não há série temporal de previsão neste modo.")
+            st.markdown("#### Evolução simulada do cenário nas próximas 12 horas")
+            st.warning("Dados totalmente simulados para fins acadêmicos e de demonstração.")
+            st.line_chart(simulated_forecast(scenario), height=180, color="#e58b00")
     else:
         st.warning(weather["error"])
 
